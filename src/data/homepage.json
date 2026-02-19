@@ -1,0 +1,22 @@
+{
+  "heroTitle": "Net Computadores",
+  "heroSubtitle": "Especialistas en Soporte Técnico, Redes y Soluciones de Hardware Empresarial.",
+  "primaryButtonText": "Solicitar Cotización",
+  "services": [
+    {
+      "title": "Mantenimiento y Soporte (ITSM)",
+      "description": "Enfoque en continuidad operativa. Mantenimiento preventivo/correctivo, gestión de SLAs, soporte en sitio y stand-by.",
+      "icon": "tabler:tool"
+    },
+    {
+      "title": "Ingeniería de Redes (Networking)",
+      "description": "Diseño de infraestructura LAN/WAN, enlaces satelitales, VPN y seguridad perimetral.",
+      "icon": "tabler:network"
+    },
+    {
+      "title": "Hardware y Licenciamiento",
+      "description": "Suministro de servidores, estaciones de trabajo, UPS, licenciamiento Endpoint y soluciones web.",
+      "icon": "tabler:devices"
+    }
+  ]
+}

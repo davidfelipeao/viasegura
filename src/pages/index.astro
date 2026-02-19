@@ -1,0 +1,210 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Brands from '~/components/widgets/Brands.astro';
+
+const metadata = {
+  title: 'V-HUB | Tu Pasaporte al Mercado Laboral en España',
+  ignoreTitleTemplate: true,
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- 1. HERO SECTION -->
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Iniciar mi Diagnóstico de Idoneidad',
+        href: '#diagnostico',
+        icon: 'tabler:steering-wheel',
+      },
+    ]}
+  >
+    <div slot="title">
+      Tu Licencia C2/C3 es tu <span class="text-accent dark:text-white highlight">Pasaporte al Mercado Laboral</span> en España
+    </div>
+
+    <div slot="subtitle">
+      <span class="font-bold">V-HUB:</span> El puente estratégico entre el talento colombiano y las grandes transportadoras españolas. Iniciamos tu proceso de movilidad segura.
+    </div>
+  </Hero>
+
+  <!-- 2. SECCIÓN DE DOLOR / EMPATÍA -->
+  <Features
+    id="features"
+    tagline="¿Por qué nosotros?"
+    title="Eliminamos la incertidumbre migratoria"
+    subtitle="Sabemos que tienes el talento, pero el laberinto de requisitos para obtener tu sueño de estabilidad laboral en Europa puede ser una barrera."
+    items={[
+      {
+        title: 'Seguridad Jurídica',
+        description: 'Proceso respaldado por expertos en movilidad internacional.',
+        icon: 'tabler:gavel',
+      },
+      {
+        title: 'Ruta Clara',
+        description: 'Sabrás exactamente qué paso dar desde el día 1.',
+        icon: 'tabler:map-2',
+      },
+      {
+        title: 'Conexión Real',
+        description: 'Directo a empresas que necesitan conductores hoy.',
+        icon: 'tabler:truck',
+      },
+    ]}
+  />
+
+  <!-- 3. EL PROCESO -->
+  <Steps
+    title="Tu Ruta hacia España"
+    items={[
+      {
+        title: 'Paso 1: Diagnóstico (50€)',
+        description: 'Auditoría de documentos, validación de licencias y filtro de seguridad.',
+        icon: 'tabler:clipboard-check',
+      },
+      {
+        title: 'Paso 2: Ruta Premium',
+        description: 'Gestión de visado, seguro médico y alojamiento.',
+        icon: 'tabler:plane',
+      },
+      {
+        title: 'Paso 3: Destino España',
+        description: 'Formación CAP y contrato laboral firmado.',
+        icon: 'tabler:flag',
+      },
+    ]}
+  />
+
+  <!-- 4. FORMULARIO DE DIAGNÓSTICO -->
+  <section id="diagnostico" class="py-16 bg-blue-50 dark:bg-slate-900">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl font-bold font-heading mb-4">Diagnóstico Inicial de Idoneidad</h2>
+        <p class="text-xl text-gray-600 dark:text-slate-400">Verifica si cumples los requisitos antes de iniciar el pago.</p>
+      </div>
+
+      <div class="bg-white dark:bg-slate-800 p-8 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
+        <form id="pre-check-form" class="space-y-6">
+          
+          <!-- Filtro 1: Licencia -->
+          <div>
+            <label class="block text-sm font-medium mb-2">¿Cuál es tu categoría de licencia de conducción vigente en Colombia?</label>
+            <select id="licencia" class="w-full p-3 rounded bg-gray-50 dark:bg-slate-900 border border-gray-300 dark:border-gray-600" required>
+              <option value="">Selecciona una opción...</option>
+              <option value="C2">C2</option>
+              <option value="C3">C3</option>
+              <option value="C1">C1</option>
+              <option value="B1">B1/B2</option>
+              <option value="NO">No tengo licencia</option>
+            </select>
+            <div id="licencia-error" class="hidden mt-2 text-red-600 text-sm font-bold bg-red-100 p-3 rounded">
+              ⚠️ Lo sentimos, el programa V-HUB requiere licencia C2 o C3 como requisito base. Te invitamos a recategorizar tu licencia y volver a postularte.
+            </div>
+          </div>
+
+          <!-- Filtro 2: Multas -->
+          <div id="section-multas" class="hidden space-y-4">
+            <div>
+              <label class="block text-sm font-medium mb-2">¿Tienes multas pendientes de pago en el SIMIT o acuerdos incumplidos?</label>
+              <select id="multas" class="w-full p-3 rounded bg-gray-50 dark:bg-slate-900 border border-gray-300 dark:border-gray-600">
+                <option value="NO">No</option>
+                <option value="SI">Sí</option>
+              </select>
+            </div>
+            
+            <div id="section-valor-multas" class="hidden">
+              <label class="block text-sm font-medium mb-2">¿El valor de tus multas supera el $1.000.000 COP?</label>
+              <select id="valor-multas" class="w-full p-3 rounded bg-gray-50 dark:bg-slate-900 border border-gray-300 dark:border-gray-600">
+                <option value="NO">No, es menor</option>
+                <option value="SI">Sí, supera el millón</option>
+              </select>
+              <div id="multas-warning" class="hidden mt-2 text-amber-600 text-sm font-bold bg-amber-100 p-3 rounded">
+                ⚠️ Para el proceso de canje en España, es obligatorio estar a paz y salvo. Si continúas, el diagnóstico evaluará tu plan de saneamiento, pero no garantiza el canje hasta el pago total.
+              </div>
+            </div>
+
+            <!-- Checkbox Legal -->
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input id="terms" type="checkbox" class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300" required>
+              </div>
+              <label for="terms" class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">Acepto los Términos, Condiciones y el Acuerdo de Confidencialidad.</label>
+            </div>
+
+            <!-- Botón Pago -->
+            <button type="submit" id="btn-submit" class="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded shadow transition duration-200">
+              Ir a Pago (50€) - Pasarela Segura
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. MARCAS -->
+  <Brands
+    title="Liderado por expertos en consultoría e innovación migratoria"
+    subtitle="Con el respaldo de aliados estratégicos en Colombia y España"
+    icons={[]}
+    images={[]}
+  />
+
+  <script is:inline>
+    // Lógica del Formulario
+    const licenciaSelect = document.getElementById('licencia');
+    const licenciaError = document.getElementById('licencia-error');
+    const sectionMultas = document.getElementById('section-multas');
+    
+    const multasSelect = document.getElementById('multas');
+    const sectionValorMultas = document.getElementById('section-valor-multas');
+    const valorMultasSelect = document.getElementById('valor-multas');
+    const multasWarning = document.getElementById('multas-warning');
+    const form = document.getElementById('pre-check-form');
+
+    if (licenciaSelect) {
+        // 1. Filtro Licencia
+        licenciaSelect.addEventListener('change', (e) => {
+          const val = e.target.value;
+          if (val === 'C1' || val === 'B1' || val === 'NO') {
+            licenciaError.classList.remove('hidden');
+            sectionMultas.classList.add('hidden');
+          } else if (val === 'C2' || val === 'C3') {
+            licenciaError.classList.add('hidden');
+            sectionMultas.classList.remove('hidden');
+          } else {
+            licenciaError.classList.add('hidden');
+            sectionMultas.classList.add('hidden');
+          }
+        });
+
+        // 2. Filtro Multas
+        multasSelect.addEventListener('change', (e) => {
+          if (e.target.value === 'SI') {
+            sectionValorMultas.classList.remove('hidden');
+          } else {
+            sectionValorMultas.classList.add('hidden');
+            multasWarning.classList.add('hidden');
+          }
+        });
+
+        valorMultasSelect.addEventListener('change', (e) => {
+          if (e.target.value === 'SI') {
+            multasWarning.classList.remove('hidden');
+          } else {
+            multasWarning.classList.add('hidden');
+          }
+        });
+
+        // 3. Envío
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Validación exitosa. Redirigiendo a Pasarela de Pagos (Wompi/ePayco)...');
+        });
+    }
+  </script>
+</Layout>

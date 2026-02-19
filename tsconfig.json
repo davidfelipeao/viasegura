@@ -1,0 +1,16 @@
+{
+  "extends": "astro/tsconfigs/strict",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "astrowind:config": ["src/config.ts"]
+    },
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+    "strict": false,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
+  }
+}
